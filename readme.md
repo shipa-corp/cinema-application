@@ -161,7 +161,7 @@ Per app:
 
 ### Pre-app creation steps
 
-- Create a new pool with the name an ingress of your preference
+- Create a new shipa framework
 
 ```sh
 shipa framework add cinema-ui.yaml
@@ -172,7 +172,7 @@ shipa framework add cinema-payment.yaml
 - Add the new frameworks to the default Shipa cluster or the cluster of your preference
 
 ```sh
-shipa cluster update shipa-cluster --framework shipa-pool --framework cinema-ui --framework cinema-services --framework cinema-payment
+shipa cluster update shipa-cluster --framework shipa-framework --framework cinema-ui --framework cinema-services --framework cinema-payment
 ```
 
 ### Movies
@@ -240,7 +240,7 @@ To give more security to applications handling sensitive data, you can set your 
 - Re-set your ENV variable and use Shipa's internal DNS as the app endpoint
 
 ```sh
-shipa env set -a booking-service PAYMENT_API_HOST=app-payments.pool-istio.svc:3000
+shipa env set -a booking-service PAYMENT_API_HOST=app-payments.cinema-services.svc:3000
 ```
 
 ### API Gateway
