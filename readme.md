@@ -79,7 +79,7 @@ db.movies.insertMany([
 Required DB only if the endpoint to list movie theaters will be tested.
 
 ```sh
-mongo -u shipa <MONGO-IP:PORT:
+mongo -u shipa <MONGO-IP:PORT>
 
 # Verify if databases already exist
 show dbs
