@@ -1,0 +1,142 @@
+.App {
+  width: calc(100% - 80px);
+  padding: 0 40px;
+}
+
+.App-header {
+  margin-bottom: 30px;
+}
+.App-header h1 {
+  margin: 0;
+}
+.App-header h4 {
+  margin: 0;
+}
+
+.main-content {
+  display: flex;
+}
+
+main {
+  padding: 0 30px 0 0;
+}
+
+aside {
+  width: 350px;
+  height: 100vh;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #e0e0e0;
+}
+
+#movies {
+  width: 100%;
+}
+
+.movies-wrapper {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+}
+
+.movie {
+  width: 200px;
+  height: auto;
+  margin-right: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+}
+
+.movie img {
+  width: 100%;
+  height: auto;
+}
+
+.movie article {
+  width: calc(100% - 20px);
+  display: block;
+  padding: 10px;
+  text-align: center;
+}
+
+.movie h3 {
+  margin: 0;
+}
+
+.movie h4 {
+  margin: 0;
+}
+
+.movie p {
+  margin: 0;
+  color: gray;
+}
+
+#catalog {
+  width: 100%;
+}
+
+#catalog form {
+  display: flex;
+  margin-bottom: 30px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+}
+
+#catalog form .form-group {
+  display: block;
+  width: 100px;
+  margin-right: 20px;
+}
+
+#catalog form .form-group label {
+  width: 100%;
+}
+
+#catalog form .form-group select {
+  width: 100%;
+}
+
+#catalog .premieres {
+  display: flex;
+}
+
+#catalog .mini-movie {
+  display: flex;
+  width: 250px;
+  margin-right: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mini-movie .circle {
+  width: 20%;
+  text-align: center;
+  background-color: teal;
+  margin-right: 10px;
+  color: white;
+}
+
+.mini-movie .circle h3 {
+  text-transform: uppercase;
+}
+
+.mini-movie article {
+  width: calc(80% - 30px);
+  padding: 10px;
+}
+
+.mini-movie h4 {
+  margin: 0 0 5px 0;
+}
+
+.mini-movie button {
+  margin: 0;
+}
+
+#booking form .form-group {
+  margin-bottom: 20px;
+}

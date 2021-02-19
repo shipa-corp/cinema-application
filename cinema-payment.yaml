@@ -1,0 +1,42 @@
+ShipaFramework: cinema-payment
+Resources:
+  General:
+    Setup:
+      Default: false
+      Public: false
+      Provisioner: kubernetes
+      KubeNamespace: ""
+    Plan:
+      Name: prod
+    Security:
+      Disable-Scan: false
+      Scan-Platform-Layers: true
+      Ignore-Components:
+      - busybody
+      - bash
+      - systemd
+      - pcre3
+      - gnupg2
+      - gnutls28
+      - ncurses
+      - tar
+      - util-linux
+      - bash
+      - dpkg
+      - shadow
+      - libgcrypt20
+      Ignore-CVES: []
+    Access:
+      Append:
+      - shipa-admin-team
+      Blacklist: []
+    Services:
+      Append: []
+      Blacklist: []
+    Router: traefik
+    Volumes: []
+    AppQuota:
+      Limit: "2"
+  ShipaNode:
+    Drivers: []
+    AutoScale: null

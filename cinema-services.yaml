@@ -1,0 +1,46 @@
+ShipaFramework: cinema-services
+Resources:
+  General:
+    Setup:
+      Default: false
+      Public: false
+      Provisioner: kubernetes
+      KubeNamespace: ""
+    Plan:
+      Name: prod
+    Security:
+      Disable-Scan: false
+      Scan-Platform-Layers: false
+      Ignore-Components:
+      - busybody
+      - bash
+      - zlib
+      - systemd
+      - pcre3
+      - gnupg2
+      - gnutls28
+      - ncurses
+      - tar
+      - util-linux
+      - bash
+      - dpkg
+      - shadow
+      - libgcrypt20
+      Ignore-CVES:
+      - CVE-2017-15873
+      - CVE-2017-16544
+      - CVE-2017-15650
+    Access:
+      Append:
+      - shipa-admin-team
+      Blacklist: []
+    Services:
+      Append: []
+      Blacklist: []
+    Router: traefik
+    Volumes: []
+    AppQuota:
+      Limit: "10"
+  ShipaNode:
+    Drivers: []
+    AutoScale: null
