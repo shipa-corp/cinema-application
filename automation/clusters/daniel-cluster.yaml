@@ -1,0 +1,40 @@
+name: daniel-cluster
+endpoint:
+  addresses:
+    - 34.121.109.60
+  caCert: |-
+    -----BEGIN CERTIFICATE-----
+    MIIDKjCCAhKgAwIBAgIQAT5WbJOdbcKlxq5KqHcFXzANBgkqhkiG9w0BAQsFADAv
+    MS0wKwYDVQQDEyQ0ZjcwN2U0ZS1lNzBjLTQ5MzUtYWRlZC1hZGY5ZjBlZjQxZGIw
+    HhcNMjEwMzI0MTc0MDE0WhcNMjYwMzIzMTg0MDE0WjAvMS0wKwYDVQQDEyQ0Zjcw
+    N2U0ZS1lNzBjLTQ5MzUtYWRlZC1hZGY5ZjBlZjQxZGIwggEiMA0GCSqGSIb3DQEB
+    AQUAA4IBDwAwggEKAoIBAQCn1PNedywDK/CsWW9nTIvm4Ulva32ujj+o8fkEDJMJ
+    sWIErytzkAQO2arGgwb2q5zGpewf0/c1XVjXlHnJBj1qGwEge7EQc4RJ7e8YDM+s
+    zlpuR+hge7ZF6woJNxQFAnH1x3GjagBhWpSg0setomZHa7jwe9YX/OjioqMhaLfn
+    u551/lBp8d4qc5BSxjqYjLrMN+qvQRmTwGNXTYor6Q5ThKIRHh6UfpocmDSIYWEb
+    c79CxKpCDRgLjExz3CyYlkNDNnXgJiK2ZlIyKNfTIbb+zyiFc5qZ9HZWEF+YZ0er
+    Olv8SCiCK6PMwH0aOpikKZLQTAj8ulxHje4bjTMtA+8XAgMBAAGjQjBAMA4GA1Ud
+    DwEB/wQEAwICBDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTU2YogMLtwSek5
+    uwwOmamUlD2mwTANBgkqhkiG9w0BAQsFAAOCAQEAnjAnGIdw4OOuX53k6Lki4p3T
+    ktYnYJJ+qCNJN0vMNqbZDgkCyTHaihJ1bP7v44lbiZRCAAuGUPeQ3WeXFQahcQgD
+    2YdzhBjqMStp0onrmQa59RRBNRugqM1mw4qq23EVmvtTlPrrwoF8dcPj76QKqP3y
+    4HT64c4fullmxvWYgiDhvZtm2W1x66kRUMw99o1Wm/8nKUPc+WNuORJykt9i+Hcv
+    /496jaOi6v0iiiCKQ1ph76k1S2WW6b3zpxT+CBAy9BVC31x4V15hJE3PEzjseC8k
+    5iTIf+Q4U6JG4XSZPLLp3uyLw5+Ni/ERXH5VfrodFuBj4d1MmO0aqtdw7lXCFw==
+    -----END CERTIFICATE-----
+  clientKey: ""
+  clientCert: ""
+  token: TOKEN
+resources:
+  frameworks:
+    - name: cinema-payment
+    - name: cinema-services
+    - name: cinema-ui
+  ingressControllers:
+    - ingressIp: ""
+      serviceType: LoadBalancer
+      type: traefik
+      httpPort: 80
+      httpsPort: 443
+      protectedPort: 31567
+      debug: false

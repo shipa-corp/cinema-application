@@ -1,0 +1,58 @@
+ShipaFramework: cinema-services
+Resources:
+  General:
+    Setup:
+      Default: false
+      Public: true
+      Provisioner: kubernetes
+      KubeNamespace: ""
+    Plan:
+      Name: plan-team1
+    Security:
+      Disable-Scan: true
+      Scan-Platform-Layers: false
+      Ignore-Components: []
+      Ignore-CVES: []
+    Access:
+      Append:
+        - team1
+      Blacklist: []
+    Services:
+      Append: []
+      Blacklist: []
+    Router: traefik
+    Volumes: []
+    AppQuota:
+      Limit: "5"
+    ContainerPolicy:
+      AllowedHosts:
+        - gcr.io/cosimages-206514
+    # NetworkPolicy:
+    #   Ingress:
+    #     PolicyMode: "allow-custom-rules-only"
+    #     CustomRules:
+    #       - Id: services-ingress-rule
+    #         Enabled: true
+    #         Description: allowing communication from known frameworks
+    #         Peers: []
+    #         AllowedApps: []
+    #         AllowedPools:
+    #           - cinema-ui
+    #           - cinema-payment
+    #     ShipaRules: []
+    #     ShipaRulesEnabled: []
+    #   Egress:
+    #     PolicyMode: "allow-all"
+    #     CustomRules: []
+    #     ShipaRules: []
+    #     ShipaRulesEnabled: []
+    #   DisableAppPolicies: false
+    NetworkPolicy:
+      Ingress:
+        PolicyMode: "deny-all"
+      Egress:
+        PolicyMode: "deny-all"
+      DisableAppPolicies: true
+  ShipaNode:
+    Drivers: []
+    AutoScale: null

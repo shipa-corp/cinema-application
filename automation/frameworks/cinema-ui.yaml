@@ -1,0 +1,38 @@
+ShipaFramework: cinema-ui
+Resources:
+  General:
+    Setup:
+      Default: false
+      Public: true
+      Provisioner: kubernetes
+      KubeNamespace: ""
+    Plan:
+      Name: plan-team1
+    Security:
+      Disable-Scan: true
+      Scan-Platform-Layers: false
+      Ignore-Components: []
+      Ignore-CVES: []
+    Access:
+      Append:
+        - team1
+      Blacklist: []
+    Services:
+      Append: []
+      Blacklist: []
+    Router: traefik
+    Volumes: []
+    AppQuota:
+      Limit: "1"
+    ContainerPolicy:
+      AllowedHosts:
+        - gcr.io/cosimages-206514
+    NetworkPolicy:
+      Ingress:
+        PolicyMode: "allow-all"
+      Egress:
+        PolicyMode: "allow-all"
+      DisableAppPolicies: false
+  ShipaNode:
+    Drivers: []
+    AutoScale: null
