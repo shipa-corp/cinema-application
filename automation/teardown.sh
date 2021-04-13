@@ -11,7 +11,7 @@ shipa app remove -a api-gateway -y
 shipa app remove -a ui-service -y
 
 # Deleting cluster
-shipa cluster remove daniel-cluster -y
+shipa cluster remove cinema-cluster -y
 
 # Deleting frameworks
 shipa framework remove cinema-services -y

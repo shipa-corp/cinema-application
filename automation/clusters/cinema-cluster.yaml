@@ -1,4 +1,4 @@
-name: daniel-cluster
+name: cinema-cluster
 endpoint:
   addresses:
     - 34.121.109.60
@@ -24,7 +24,7 @@ endpoint:
     -----END CERTIFICATE-----
   clientKey: ""
   clientCert: ""
-  token: TOKEN
+  token: USE YOUR TOKEN HERE
 resources:
   frameworks:
     - name: cinema-payment

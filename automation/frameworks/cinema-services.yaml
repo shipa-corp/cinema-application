@@ -1,58 +1,45 @@
-ShipaFramework: cinema-services
-Resources:
-  General:
-    Setup:
-      Default: false
-      Public: true
-      Provisioner: kubernetes
-      KubeNamespace: ""
-    Plan:
-      Name: plan-team1
-    Security:
-      Disable-Scan: true
-      Scan-Platform-Layers: false
-      Ignore-Components: []
-      Ignore-CVES: []
-    Access:
-      Append:
-        - team1
-      Blacklist: []
-    Services:
-      Append: []
-      Blacklist: []
-    Router: traefik
-    Volumes: []
-    AppQuota:
-      Limit: "5"
-    ContainerPolicy:
-      AllowedHosts:
+shipaFramework: cinema-services
+resources:
+  general:
+    setup:
+      default: false
+      public: false
+      provisioner: kubernetes
+      kubeNamespace: ""
+    plan:
+      Name: dev
+    security:
+      disableScan: true
+      scanPlatformLayers: false
+      ignoreComponents: []
+      ignoreCVES: []
+    access:
+      append:
+        - dev
+      blacklist: []
+    router: traefik
+    volumes: []
+    appQuota:
+      limit: "1"
+    containerPolicy:
+      allowedHosts:
         - gcr.io/cosimages-206514
-    # NetworkPolicy:
-    #   Ingress:
-    #     PolicyMode: "allow-custom-rules-only"
-    #     CustomRules:
-    #       - Id: services-ingress-rule
-    #         Enabled: true
-    #         Description: allowing communication from known frameworks
-    #         Peers: []
-    #         AllowedApps: []
-    #         AllowedPools:
-    #           - cinema-ui
-    #           - cinema-payment
-    #     ShipaRules: []
-    #     ShipaRulesEnabled: []
-    #   Egress:
-    #     PolicyMode: "allow-all"
-    #     CustomRules: []
-    #     ShipaRules: []
-    #     ShipaRulesEnabled: []
-    #   DisableAppPolicies: false
-    NetworkPolicy:
-      Ingress:
-        PolicyMode: "deny-all"
-      Egress:
-        PolicyMode: "deny-all"
-      DisableAppPolicies: true
-  ShipaNode:
-    Drivers: []
-    AutoScale: null
+    networkPolicy:
+      ingress:
+        policyMode: "allow-custom-rules-only"
+        customRules:
+          - id: services-ingress-rule
+            enabled: true
+            description: allowing communication from gateway only
+            peers: []
+            allowedApps:
+              - api-gateway
+            allowedPools: []
+        shipaRules: []
+        shipaRulesEnabled: []
+      egress:
+        policyMode: "allow-all"
+        customRules: []
+        shipaRules: []
+        shipaRulesEnabled: []
+      disableAppPolicies: false

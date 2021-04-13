@@ -1,57 +1,52 @@
-ShipaFramework: cinema-gateway
-Resources:
-  General:
-    Setup:
-      Default: false
-      Public: true
-      Provisioner: kubernetes
-      KubeNamespace: ""
-    Plan:
-      Name: plan-team1
-    Security:
-      Disable-Scan: true
-      Scan-Platform-Layers: false
-      Ignore-Components: []
-      Ignore-CVES: []
-    Access:
-      Append:
-        - team1
-      Blacklist: []
-    Services:
-      Append: []
-      Blacklist: []
-    Router: traefik
-    Volumes: []
-    AppQuota:
-      Limit: "1"
-    ContainerPolicy:
-      AllowedHosts:
+shipaFramework: cinema-payment
+resources:
+  general:
+    setup:
+      default: false
+      public: false
+      provisioner: kubernetes
+      kubeNamespace: ""
+    plan:
+      Name: dev
+    security:
+      disableScan: true
+      scanPlatformLayers: false
+      ignoreComponents: []
+      ignoreCVES: []
+    access:
+      append:
+        - dev
+      blacklist: []
+    router: traefik
+    volumes: []
+    appQuota:
+      limit: "1"
+    containerPolicy:
+      allowedHosts:
         - gcr.io/cosimages-206514
-    NetworkPolicy:
-      Ingress:
-        PolicyMode: allow-custom-rules-only
-        CustomRules:
-          - Id: payment-ingress-rule
-            Enabled: true
-            Description: restricting access to payment ingress
-            Ports:
+    networkPolicy:
+      ingress:
+        policyMode: "allow-rules-only"
+        customRules:
+          - id: payment-ingress-rule
+            enabled: true
+            description: restricting access to payment ingress
+            ports:
               - protocol: TCP
                 port:
                   type: 0
                   intval: 3000
                   strval: ""
-            Peers: []
-            AllowedApps:
+            peers: []
+            allowedApps:
               - booking-service
-            AllowedPools: []
-        ShipaRules: []
-        ShipaRulesEnabled: []
-      Egress:
-        PolicyMode: allow-all
-        CustomRules: []
-        ShipaRules: []
-        ShipaRulesEnabled: []
-      DisableAppPolicies: true
-  ShipaNode:
-    Drivers: []
-    AutoScale: null
+            allowedPools: []
+        shipaRules: []
+        shipaRulesEnabled:
+          - kube-dns
+      egress:
+        policyMode: "allow-all"
+        customRules: []
+        shipaRules: []
+        shipaRulesEnabled: []
+      disableAppPolicies: true

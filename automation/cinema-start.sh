@@ -4,7 +4,7 @@ echo "--------- STARTING SETUP ---------"
 
 # Setting up ENV vars
 echo "Make sure to specify the right team in ENV in the cinema-start.sh file"
-TEAM=team1
+TEAM=dev
 MONGO_HOST=34.83.231.158:27017
 
 # Creating frameworks
@@ -40,7 +40,7 @@ shipa env set -a payment-service DB_SERVER=$MONGO_HOST DB_USER=shipau DB_PASS=sh
 
 # Booking
 shipa app create booking-service -t $TEAM -k cinema-services
-shipa env set -a booking-service DB_SERVER=$MONGO_HOST DB_USER=shipau DB_PASS=shipapass DB=booking NOTIFICATION_API_HOST=app-notification-service.shipa-cinema-services.svc PAYMENT_API_HOST=app-payment-service.shipa-cinema-payment.svc
+shipa env set -a booking-service DB_SERVER=$MONGO_HOST DB_USER=shipau DB_PASS=shipapass DB=booking NOTIFICATION_API_HOST=app-notification-service.shipa-cinema-services.svc:3000 PAYMENT_API_HOST=app-payment-service.shipa-cinema-payment.svc:3000
 
 # Api Gateway 
 shipa app create api-gateway -t $TEAM -k cinema-services
@@ -49,7 +49,7 @@ shipa env set -a api-gateway API_BOOKING=app-booking-service.shipa-cinema-servic
 # Cinema UI
 shipa app create ui-service -t $TEAM -k cinema-ui
 
-GATEWAY_URL=$(shipa app info -a api-gateway | grep "Address:" | cut -c 10-)
+GATEWAY_URL=$(shipa app info -a api-gateway | grep "Address:" | cut -c 17-)
 shipa env set -a ui-service REACT_APP_API_SERVER=$GATEWAY_URL
 
 echo "--------- SETUP COMPLETED ---------"
